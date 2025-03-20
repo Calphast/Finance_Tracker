@@ -24,6 +24,9 @@ to quickly create a Cobra application.`,
 	},
 }
 
+// Global filename for all log-derived commands
+const filename string = "yourLog.csv"
+
 func init() {
 	rootCmd.AddCommand(logCmd)
 

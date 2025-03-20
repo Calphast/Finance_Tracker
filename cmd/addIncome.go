@@ -10,8 +10,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const filename string = "yourLog.csv"
-
 // addIncomeCmd represents the addIncome command
 var addIncomeCmd = &cobra.Command{
 	Use:   "addIncome",
