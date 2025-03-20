@@ -1,14 +1,12 @@
 # Finance_Tracker
 
-# Finance_Tracker
-
 Personal Finance Tracker
 
 Components:
 
-SQLite3 (Stores financial transactions)
+- SQLite3 (Stores financial transactions)
 
-Cobra (Command-line interface)
+- Cobra (Command-line interface)
 
 Commands:
 
