@@ -10,11 +10,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const filename string = "yourLog.csv"
-
-// addIncomeCmd represents the addIncome command
-var addIncomeCmd = &cobra.Command{
-	Use:   "addIncome",
+// addExpenseCmd represents the addExpense command
+var addExpenseCmd = &cobra.Command{
+	Use:   "addExpense",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -30,22 +28,22 @@ to quickly create a Cobra application.`,
 			return
 		}
 
-		tools.AddToCsv(filename, amountRetrieved, "Income")
+		tools.AddToCsv(filename, amountRetrieved, "Expense")
 
-		fmt.Printf("Income added: $%.2f\n", amountRetrieved)
+		fmt.Printf("Expense added: $%.2f\n", amountRetrieved)
 	},
 }
 
 func init() {
-	logCmd.AddCommand(addIncomeCmd)
-	addIncomeCmd.Flags().Float64("amount", 0.0, "Please specify amount.")
+	logCmd.AddCommand(addExpenseCmd)
+	addExpenseCmd.Flags().Float64("amount", 0.0, "Please specify amount.")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// addIncomeCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// addExpenseCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// addIncomeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// addExpenseCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
