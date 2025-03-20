@@ -13,13 +13,10 @@ import (
 // addExpenseCmd represents the addExpense command
 var addExpenseCmd = &cobra.Command{
 	Use:   "addExpense",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Adds a expense entry to log.",
+	Long: `Generates a new expense log:
+	
+	- log addExpense --amount <amount>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Retrieve the flag value correctly
 		amountRetrieved, err := cmd.Flags().GetFloat64("amount")

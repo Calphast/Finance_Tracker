@@ -13,13 +13,11 @@ import (
 // summaryCmd represents the summary command
 var summaryCmd = &cobra.Command{
 	Use:   "summary",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Returns a summary of all entries in log",
+	Long: `returns a summary of all entries, the total income and the total expense,
+	in addition to total balance
+	
+	- log summary`,
 	Run: func(cmd *cobra.Command, args []string) {
 		income, expenses, balance, err := db.GetSummary()
 		if err != nil {

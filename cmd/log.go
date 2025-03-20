@@ -12,13 +12,13 @@ import (
 // logCmd represents the log command
 var logCmd = &cobra.Command{
 	Use:   "log",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Collection of commands that modify the existing log",
+	Long: `Collection of commands that modify/deals with the existing log,
+	available actions:
+	
+	- log addIncome --amount <amount>
+	- log addExpense --amount <amount>
+	- log summary`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("log called")
 	},
