@@ -2,16 +2,16 @@ package tools
 
 import (
 	"encoding/csv"
+
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"time"
 )
 
 func AddToCsv(filename string, amount float64, action string) {
 	currentTime := time.Now()
-	newRow := []string{currentTime.Format("20060102150405"), strconv.FormatFloat(amount, 'f', -2, 64), action}
+	newRow := []string{currentTime.Format("20060102150405"), USD(amount).String(), action}
 
 	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
@@ -24,7 +24,7 @@ func AddToCsv(filename string, amount float64, action string) {
 	w.Flush()
 }
 
-func ReadCsv(filename string) {
+func ReadCsv(filename string) [][]string {
 	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
@@ -41,4 +41,6 @@ func ReadCsv(filename string) {
 		fmt.Print(row[1] + " " + row[2])
 		fmt.Print("\n")
 	}
+
+	return record
 }
