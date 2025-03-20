@@ -1,7 +1,5 @@
 # Finance_Tracker
 
-# Finance_Tracker
-
 Personal Finance Tracker
 
 Components:
