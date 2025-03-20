@@ -4,7 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"finance-tracker/tools"
+	"finance-tracker/db"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -28,7 +28,11 @@ to quickly create a Cobra application.`,
 			return
 		}
 
-		tools.AddToCsv(filename, amountRetrieved, "Expense")
+		err = db.AddTransactions("expense", amountRetrieved)
+		if err != nil {
+			fmt.Println("Error storing into database:", err)
+			return
+		}
 
 		fmt.Printf("Expense added: $%.2f\n", amountRetrieved)
 	},

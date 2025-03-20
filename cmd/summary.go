@@ -4,10 +4,8 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"finance-tracker/tools"
+	"finance-tracker/db"
 	"fmt"
-	"strconv"
-	"strings"
 
 	"github.com/spf13/cobra"
 )
@@ -23,21 +21,13 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		total := 0.00
-		record := tools.ReadCsv(filename)
-
-		for _, row := range record {
-			value, _ := strconv.ParseFloat(strings.Trim(row[1], "$"), 64)
-
-			if row[2] == "Expense" {
-				total -= float64(value)
-			} else {
-				total += float64(value)
-			}
+		income, expenses, balance, err := db.GetSummary()
+		if err != nil {
+			fmt.Println("Log empty, try adding income and/or expense")
+			return
 		}
 
-		summaryRow := "Total aggregate: " + tools.USD(total).String()
-		fmt.Print(summaryRow)
+		fmt.Printf("Total Income: $%.2f\nTotal Expenses: $%.2f\nBalance: $%.2f\n", income, expenses, balance)
 	},
 }
 
